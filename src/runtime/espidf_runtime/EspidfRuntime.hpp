@@ -5,7 +5,10 @@
 
 #pragma once
 
+#include "../RuntimeConfig.hpp"
 #include "../Runtime.hpp"
+
+#ifdef SMARTCAR_BUILD_ESPIDF_RUNTIME
 
 class EspidfRuntime : public Runtime
 {
@@ -35,3 +38,5 @@ public:
     uint8_t getInputState() const override;
     int getRisingEdgeMode() const override;
 };
+
+#endif

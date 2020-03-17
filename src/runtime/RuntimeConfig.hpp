@@ -5,9 +5,9 @@
 
 #pragma once
 
-#define SMARTCAR_DEFAULT_RUNTIME EspidfRuntime
-#define SMARTCAR_DEFAULT_RUNTIME_PATH "runtime/espidf_runtime/EspidfRuntime.hpp"
-#define SMARTCAR_BUILD_ESPIDF_RUNTIME
+//#define SMARTCAR_DEFAULT_RUNTIME EspidfRuntime
+//#define SMARTCAR_DEFAULT_RUNTIME_PATH "runtime/espidf_runtime/EspidfRuntime.hpp"
+//#define SMARTCAR_BUILD_ESPIDF_RUNTIME
 
 #ifndef SMARTCAR_DEFAULT_RUNTIME
 #define SMARTCAR_DEFAULT_RUNTIME ArduinoRuntime
