@@ -32,6 +32,10 @@
   },
   "build": {
     "srcFilter": [
+      "+src/*/<*.h>",
+      "+src/*/<*.c>",
+      "+src/*/<*.hpp>",
+      "+src/*/<*.cpp>",
       "+lib/*/<*.h>",
       "+lib/*/<*.c>",
       "+lib/*/<*.hpp>",
