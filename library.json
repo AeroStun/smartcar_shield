@@ -21,6 +21,12 @@
     "espidf"
   ],
   "platforms": "*",
+  "dependencies": [
+    {"name": "Wire"},
+    {"name": "Servo"},
+    {"name": "ESP32 AnalogWrite"},
+    {"name": "ServoESP32"}
+  ],
   "export": {
     "exclude": [
         "CmakeModules",
