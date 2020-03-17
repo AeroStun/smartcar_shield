@@ -19,6 +19,6 @@ jobs:
         pip install platformio
         platformio lib -g install "Servo" "ESP32 AnalogWrite" "ServoESP32"
     - name: Run PlatformIO
-      run: platformio ci --board=esp32dev -lib=.
+      run: platformio ci --board=esp32dev --lib=.
       env:
         PLATFORMIO_CI_SRC: ${{ matrix.example }}
