@@ -1,0 +1,24 @@
+name: PlatformIO CI
+
+on: [push, pull_request]
+
+jobs:
+  build-arduino:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        example: [examples/BareMinimum/BareMinimum.ino, examples/Car/DistanceCar/DistanceCar.ino, examples/Car/FullSerialControl/FullSerialControl.ino, examples/Car/HeadingCar/HeadingCar.ino, examples/Car/PidControllerMonitor/PidControllerMonitor.ino, examples/Car/SerialControlServoESC/SerialControlServoESC.ino, examples/Car/SimpleCar/SimpleCar.ino, examples/Car/SmartCar/SmartCar.ino, examples/Car/automatedMovements/automatedMovements.ino, examples/Car/manualControl/manualControl.ino, examples/Car/manualWithCruiseControl/manualWithCruiseControl.ino, examples/Car/rotateOnSpot/rotateOnSpot.ino, examples/Car/shieldMotorsTest/shieldMotorsTest.ino, examples/sensors/gyroscope/gyroscopeCalibration/gyroscopeCalibration.ino, examples/sensors/gyroscope/gyroscopeHeading/gyroscopeHeading.ino, examples/sensors/infrareds/GP2D120/GP2D120.ino, examples/sensors/infrareds/GP2Y0A02/GP2Y0A02.ino, examples/sensors/infrareds/GP2Y0A21/GP2Y0A21.ino, examples/sensors/odometer/directionalOdometers/directionalOdometers.ino, examples/sensors/odometer/findPulsesPerMeter/findPulsesPerMeter.ino, examples/sensors/odometer/singleOdometer/singleOdometer.ino, examples/sensors/odometer/twoOdometers/twoOdometers.ino, examples/sensors/ultrasounds/SR04/SR04.ino, examples/sensors/ultrasounds/SRF08/SRF08.ino]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v1
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install platformio
+        platformio lib -g install "Servo" "ESP32 AnalogWrite" "ServoESP32"
+    - name: Run PlatformIO
+      run: platformio ci --board=esp32dev
+      env:
+        PLATFORMIO_CI_SRC: ${{ matrix.example }}
