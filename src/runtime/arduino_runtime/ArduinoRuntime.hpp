@@ -6,7 +6,9 @@
 
 #pragma once
 
+#include "../RuntimeConfig.hpp"
 #include "../Runtime.hpp"
+
 #ifdef SMARTCAR_BUILD_ARDUINO_RUNTIME
 
 class ArduinoRuntime : public Runtime
