@@ -22,24 +22,11 @@
   ],
   "platforms": "*",
   "export": {
-  "exclude": [
-      "CmakeModules",
-      "extras",
-      "docs",
-      "test"
-  ],
-  "include": null
-  },
-  "build": {
-    "srcFilter": [
-      "+src/*/<*.h>",
-      "+src/*/<*.c>",
-      "+src/*/<*.hpp>",
-      "+src/*/<*.cpp>",
-      "+lib/*/<*.h>",
-      "+lib/*/<*.c>",
-      "+lib/*/<*.hpp>",
-      "+lib/*/<*.cpp>"
+    "exclude": [
+        "CmakeModules",
+        "extras",
+        "docs",
+        "test"
     ]
   },
   "keywords": [
