@@ -1,3 +1,4 @@
+#include "../RuntimeConfig.hpp"
 #include "ArduinoRuntime.hpp"
 #ifdef SMARTCAR_BUILD_ARDUINO_RUNTIME
 #include <Arduino.h>
