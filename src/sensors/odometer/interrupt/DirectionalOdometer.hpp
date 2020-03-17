@@ -32,7 +32,6 @@ struct DirectionalOdometerPins
 class DirectionalOdometer : public DirectionlessOdometer
 {
 public:
-#ifdef SMARTCAR_BUILD_FOR_ARDUINO
     /**
      * Constructs an odometer that can measure distance, speed and direction
      * @param pulsePin          The pin that receives the pulses
@@ -56,7 +55,7 @@ public:
                         uint8_t forwardWhenLowPin,
                         InterruptCallback callback,
                         unsigned long pulsesPerMeter,
-                        Runtime& runtime = arduinoRuntime);
+                        Runtime& runtime = defaultRuntime);
 
     /**
      * Constructs an odometer that can measure distance, speed and direction
@@ -76,19 +75,7 @@ public:
     DirectionalOdometer(DirectionalOdometerPins pins,
                         InterruptCallback callback,
                         unsigned long pulsesPerMeter,
-                        Runtime& runtime = arduinoRuntime);
-#else
-    DirectionalOdometer(uint8_t pulsePin,
-                        uint8_t forwardWhenLowPin,
-                        InterruptCallback callback,
-                        unsigned long pulsesPerMeter,
-                        Runtime& runtime);
-
-    DirectionalOdometer(DirectionalOdometerPins pins,
-                        InterruptCallback callback,
-                        unsigned long pulsesPerMeter,
-                        Runtime& runtime);
-#endif
+                        Runtime& runtime = defaultRuntime);
 
     /* Check `DirectionlessOdometer` for documentation */
     void reset() override;
