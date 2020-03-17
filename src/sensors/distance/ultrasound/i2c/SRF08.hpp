@@ -6,15 +6,13 @@
  */
 #pragma once
 
-#include <stdint.h>
+#include <cstdint>
 
 #include "../../../../runtime/Runtime.hpp"
 #include "../../DistanceSensor.hpp"
 
-#ifdef SMARTCAR_BUILD_FOR_ARDUINO
-#include "../../../../runtime/arduino_runtime/ArduinoRuntime.hpp"
-extern ArduinoRuntime arduinoRuntime;
-#endif
+#include "runtime/RuntimeConfig.hpp"
+extern SmartcarDefaultRuntime defaultRuntime;
 
 namespace smartcarlib
 {
@@ -31,7 +29,6 @@ const uint8_t kDefaultPingDelay  = 70;
 class SRF08 : public DistanceSensor
 {
 public:
-#ifdef SMARTCAR_BUILD_FOR_ARDUINO
     /**
      * Constructs an SRF08 sensor that communicates over I2C
      * @param address I2C address which should be within the range of [112, 127]
@@ -41,10 +38,7 @@ public:
      * SRF08 srf08(112);
      * \endcode
      */
-    SRF08(uint8_t address, Runtime& runtime = arduinoRuntime);
-#else
-    SRF08(uint8_t address, Runtime& runtime);
-#endif
+    SRF08(uint8_t address, Runtime& runtime = defaultRuntime);
 
     /* Check `DistanceSensor` interface for documentation */
     unsigned int getDistance() override;

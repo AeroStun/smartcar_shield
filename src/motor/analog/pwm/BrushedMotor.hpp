@@ -14,10 +14,8 @@
 #include "../../../runtime/Runtime.hpp"
 #include "../../Motor.hpp"
 
-#ifdef SMARTCAR_BUILD_FOR_ARDUINO
-#include "../../../runtime/arduino_runtime/ArduinoRuntime.hpp"
-extern ArduinoRuntime arduinoRuntime;
-#endif
+#include "runtime/RuntimeConfig.hpp"
+extern SmartcarDefaultRuntime defaultRuntime;
 
 /**
  * @brief Helper class to represent brushed motor pins
@@ -46,7 +44,6 @@ struct BrushedMotorPins
 class BrushedMotor : public Motor
 {
 public:
-#ifdef SMARTCAR_BUILD_FOR_ARDUINO
     /**
      * Constructs a brushed DC motor instance
      * @param forwardPin  The direction pin that when set to HIGH makes the motor spin forward
@@ -61,7 +58,7 @@ public:
     BrushedMotor(uint8_t forwardPin,
                  uint8_t backwardPin,
                  uint8_t enablePin,
-                 Runtime& runtime = arduinoRuntime);
+                 Runtime& runtime = defaultRuntime);
 
     /**
      * Constructs a brushed DC motor instance
@@ -72,12 +69,8 @@ public:
      * BrushedMotor leftMotor(smartcarlib::pins::v2::leftMotorPins);
      * \endcode
      */
-    BrushedMotor(BrushedMotorPins pins, Runtime& runtime = arduinoRuntime);
+    BrushedMotor(BrushedMotorPins pins, Runtime& runtime = defaultRuntime);
 
-#else
-    BrushedMotor(uint8_t forwardPin, uint8_t backwardPin, uint8_t enablePin, Runtime& runtime);
-    BrushedMotor(BrushedMotorPins pins, Runtime& runtime);
-#endif
 
     /* Check `Motor` interface for documentation */
     void setSpeed(int speed) override;

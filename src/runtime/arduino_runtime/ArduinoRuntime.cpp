@@ -1,7 +1,8 @@
 #include "ArduinoRuntime.hpp"
+#ifdef SMARTCAR_BUILD_ARDUINO_RUNTIME
 #include <Arduino.h>
 #include <Wire.h>
-#include <math.h>
+#include <cmath>
 #ifdef ESP_BOARD
 #if defined(ESP32)
 #include "analogWrite.h"
@@ -134,3 +135,5 @@ int ArduinoRuntime::getRisingEdgeMode() const
 {
     return RISING;
 }
+
+#endif

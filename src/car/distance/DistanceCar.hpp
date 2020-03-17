@@ -8,10 +8,8 @@
 #include "../../sensors/odometer/Odometer.hpp"
 #include "../simple/SimpleCar.hpp"
 
-#ifdef SMARTCAR_BUILD_FOR_ARDUINO
-#include "../../runtime/arduino_runtime/ArduinoRuntime.hpp"
-extern ArduinoRuntime arduinoRuntime;
-#endif
+#include "runtime/RuntimeConfig.hpp"
+extern SmartcarDefaultRuntime defaultRuntime;
 
 namespace smartcarlib
 {
@@ -32,7 +30,6 @@ const auto kBreakSpeedScale              = 10;
 class DistanceCar : virtual public SimpleCar
 {
 public:
-#ifdef SMARTCAR_BUILD_FOR_ARDUINO
     /**
      * Constructs a car equipped with a distance sensor
      * @param control  The car's control
@@ -49,7 +46,7 @@ public:
      * DistanceCar car(control, odometer);
      * \endcode
      */
-    DistanceCar(Control& control, Odometer& odometer, Runtime& runtime = arduinoRuntime);
+    DistanceCar(Control& control, Odometer& odometer, Runtime& runtime = defaultRuntime);
 
     /**
      * Constructs a car equipped with a distance sensor
@@ -77,14 +74,8 @@ public:
     DistanceCar(Control& control,
                 Odometer& odometerLeft,
                 Odometer& odometerRight,
-                Runtime& runtime = arduinoRuntime);
-#else
-    DistanceCar(Control& control, Odometer& odometer, Runtime& runtime);
-    DistanceCar(Control& control,
-                Odometer& odometerLeft,
-                Odometer& odometerRight,
-                Runtime& runtime);
-#endif
+                Runtime& runtime = defaultRuntime);
+
 
     /**
      * Gets the car's travelled distance

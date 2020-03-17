@@ -1,15 +1,13 @@
 /**
- * \class ArduinoRuntime
- * The class to programatically represent the Arduino runtime environment or
- * alternatively calls to the AVR and Arduino libraries.
+ * \class EspidfRuntime
+ * The class to programmatically represent the ESP-IDF framework.
  */
 
 #pragma once
 
 #include "../Runtime.hpp"
-#ifdef SMARTCAR_BUILD_ARDUINO_RUNTIME
 
-class ArduinoRuntime : public Runtime
+class EspidfRuntime : public Runtime
 {
 public:
     void setPinDirection(uint8_t pin, uint8_t direction) override;
@@ -37,5 +35,3 @@ public:
     uint8_t getInputState() const override;
     int getRisingEdgeMode() const override;
 };
-
-#endif

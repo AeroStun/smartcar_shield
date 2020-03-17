@@ -1,0 +1,45 @@
+{
+  "name": "Smartcar Shield",
+  "description": "Library for controlling the Smartcar platform.\nThe Smartcar shield library allows the user to control a small robotic vehicular platform, the Smartcar, in an easy and cost effective way. It is intended for, but not limited to, the Smartcar Arduino shield, which includes an L293D h-bridge for controlling two DC motors and a GY-50 gyroscope module (based on the L3G4200D sensor).",
+  "version": "6.0.0",
+  "license": "MIT",
+  "homepage": "http://plat.is/smartcar",
+  "repository": {
+    "url": "https://github.com/AeroStun/smartcar_shield",
+    "type": "git"
+  },
+  "authors": [
+    {
+      "name": "Dimitris Platis",
+      "url": "https://plat.is",
+      "email": "dimitris@plat.is",
+      "maintainer": true
+    }
+  ],
+  "frameworks": [
+    "arduino",
+    "espidf"
+  ],
+  "platforms": "*",
+  "export": {
+  "exclude": [
+      "CmakeModules",
+      "extras",
+      "docs",
+      "test"
+  ],
+  "include": null
+  },
+  "build": {
+    "srcFilter": [
+      "+lib/*/<*.h>",
+      "+lib/*/<*.c>",
+      "+lib/*/<*.hpp>",
+      "+lib/*/<*.cpp>"
+    ]
+  },
+  "keywords": [
+    "device",
+    "control"
+  ]
+}

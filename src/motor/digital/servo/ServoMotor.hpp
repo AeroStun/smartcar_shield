@@ -9,7 +9,7 @@
 #pragma once
 
 #include <Servo.h>
-#include <stdint.h>
+#include <cstdint>
 
 #include "../../Motor.hpp"
 
@@ -19,9 +19,9 @@ namespace constants
 {
 namespace servomotor
 {
-const int kDefaultMinPulseLength  = 1000;
-const int kDefaultIdlePulseLength = 1500;
-const int kDefaultMaxPulseLength  = 2000;
+constexpr int kDefaultMinPulseLength  = 1000;
+constexpr int kDefaultIdlePulseLength = 1500;
+constexpr int kDefaultMaxPulseLength  = 2000;
 } // namespace servomotor
 } // namespace constants
 } // namespace smartcarlib

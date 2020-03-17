@@ -8,15 +8,12 @@
 #include "../../../../../runtime/Runtime.hpp"
 #include "../InfraredAnalogSensor.hpp"
 
-#ifdef SMARTCAR_BUILD_FOR_ARDUINO
-#include "../../../../../runtime/arduino_runtime/ArduinoRuntime.hpp"
-extern ArduinoRuntime arduinoRuntime;
-#endif
+#include "runtime/RuntimeConfig.hpp"
+extern SmartcarDefaultRuntime defaultRuntime;
 
 class GP2D120 : public InfraredAnalogSensor
 {
 public:
-#ifdef SMARTCAR_BUILD_FOR_ARDUINO
     /**
      * Constructs a GP2D120 sensor
      * @param pin   The analog pin receiving sensor signals
@@ -27,10 +24,8 @@ public:
      * GP2D120 infraredSensor(IR_PIN);
      * \endcode
      */
-    GP2D120(uint8_t pin, Runtime& runtime = arduinoRuntime);
-#else
-    GP2D120(uint8_t pin, Runtime& runtime);
-#endif
+    GP2D120(uint8_t pin, Runtime& runtime = defaultRuntime);
+
 
     /* Check `DistanceSensor` interface for documentation */
     unsigned int getDistance() override;
