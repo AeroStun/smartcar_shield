@@ -1,7 +1,9 @@
-extern "C" extern void setup();
-extern "C" extern void loop();
+extern "C"  {
+    extern void setup(void);
+    extern void loop(void);
+}
 
 extern "C" void app_main() {
-    setup();
-    loop(); // We just want to have `loop` be ODR-used
+    ::setup();
+    ::loop(); // We just want to have `loop` be ODR-used
 }
