@@ -38,7 +38,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install platformio
       - name: Run PlatformIO
-        run: platformio ci --board=esp32dev --lib=. --lib=lib/Servo_ESPIDF --project-option="framework=espidf" --project-option="build_flags=-DSMARTCAR_DEFAULT_RUNTIME=\"EspidfRuntime\" -DSMARTCAR_DEFAULT_RUNTIME_PATH=\"runtime/espidf_runtime/EspidfRuntime.hpp\" -DEXAMPLE_FILE=$EXAMPLE_FILE"
+        run: platformio ci --board=esp32dev --lib=. --lib=lib/Servo_ESPIDF --project-option="framework=espidf" --project-option="build_flags=-DSMARTCAR_DEFAULT_RUNTIME=\"EspidfRuntime\" -DSMARTCAR_DEFAULT_RUNTIME_PATH=\"runtime/espidf_runtime/EspidfRuntime.hpp\" -DEXAMPLE_FILE=\"${EXAMPLE_FILE}\""
         env:
           PLATFORMIO_CI_SRC: test/polyfills/examples_espidf_symbols.cpp
           EXAMPLE_FILE: ${{ matrix.example }}
