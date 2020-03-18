@@ -1,4 +1,5 @@
-#include EXAMPLE_FILE
+extern void setup();
+extern void loop();
 
 extern "C" void app_main() {
     setup();
