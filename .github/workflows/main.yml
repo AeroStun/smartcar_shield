@@ -17,7 +17,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install platformio
-        platformio lib -g install "Wire" "Servo" "ESP32 AnalogWrite" "ServoESP32"
+        platformio lib -g install "Servo" "ESP32 AnalogWrite" "ServoESP32"
     - name: Run PlatformIO
       run: platformio ci --board=esp32dev --lib=.
       env:
