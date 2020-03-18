@@ -22,3 +22,22 @@ jobs:
       run: platformio ci --board=esp32dev --lib=.
       env:
         PLATFORMIO_CI_SRC: ${{ matrix.example }}
+
+  build-espidf:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        example: [examples/SimpleCar/SimpleCar.ino, examples/automatedMovements/automatedMovements.ino, examples/rotateOnSpot/rotateOnSpot.ino]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v1
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install platformio
+      - name: Run PlatformIO
+        run: platformio ci --board=esp32dev --lib=. --lib=lib/Servo_ESPIDF --project-options="framework=espidf" --project-options="build_flags=-DSMARTCAR_DEFAULT_RUNTIME=\"EspidfRuntime\" -DSMARTCAR_DEFAULT_RUNTIME_PATH=\"runtime/espidf_runtime/EspidfRuntime.hpp\""
+        env:
+          PLATFORMIO_CI_SRC: ${{ matrix.example }} test/polyfills/examples_espidf_symbols.cpp
