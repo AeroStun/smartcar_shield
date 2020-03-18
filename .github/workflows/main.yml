@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        example: [examples/SimpleCar/SimpleCar.ino, examples/automatedMovements/automatedMovements.ino, examples/rotateOnSpot/rotateOnSpot.ino]
+        example: [examples/Car/SimpleCar/SimpleCar.ino, examples/Car/automatedMovements/automatedMovements.ino, examples/Car/rotateOnSpot/rotateOnSpot.ino]
 
     steps:
       - uses: actions/checkout@v2
