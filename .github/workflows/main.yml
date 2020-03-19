@@ -23,22 +23,22 @@ jobs:
       env:
         PLATFORMIO_CI_SRC: ${{ matrix.example }}
 
-  build-espidf:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        example: [examples/Car/SimpleCar/SimpleCar.cpp, examples/Car/automatedMovements/automatedMovements.cpp, examples/Car/rotateOnSpot/rotateOnSpot.cpp]
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v1
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install platformio
-          find examples/ -depth -name "*.ino" -exec sh -c 'mv "$1" "${1%.ino}.cpp"' _ {} \;
-      - name: Run PlatformIO
-        run: platformio ci --board=esp32dev --lib=. --lib=lib/Servo_ESPIDF --project-option="framework=espidf" --project-option="build_flags= -DSMARTCAR_BUILD_ESPIDF_RUNTIME=1 -DSMARTCAR_DEFAULT_RUNTIME=\"EspidfRuntime\" -DSMARTCAR_DEFAULT_RUNTIME_PATH='\"runtime/espidf_runtime/EspidfRuntime.hpp\"'"
-        env:
-          PLATFORMIO_CI_SRC: ${{ matrix.example }}
+  #build-espidf:
+  #  runs-on: ubuntu-latest
+  #  strategy:
+  #    matrix:
+  #      example: [examples/Car/SimpleCar/SimpleCar.cpp, examples/Car/automatedMovements/automatedMovements.cpp, examples/Car/rotateOnSpot/rotateOnSpot.cpp]
+  #
+  #  steps:
+  #    - uses: actions/checkout@v2
+  #    - name: Set up Python
+  #      uses: actions/setup-python@v1
+  #    - name: Install dependencies
+  #      run: |
+  #        python -m pip install --upgrade pip
+  #        pip install platformio
+  #        find examples/ -depth -name "*.ino" -exec sh -c 'mv "$1" "${1%.ino}.cpp"' _ {} \;
+  #    - name: Run PlatformIO
+  #      run: platformio ci --board=esp32dev --lib=. --lib=lib/Servo_ESPIDF --project-option="framework=espidf" --project-option="build_flags= -DSMARTCAR_BUILD_ESPIDF_RUNTIME=1 -DSMARTCAR_DEFAULT_RUNTIME=\"EspidfRuntime\" -DSMARTCAR_DEFAULT_RUNTIME_PATH='\"runtime/espidf_runtime/EspidfRuntime.hpp\"'"
+  #      env:
+  #        PLATFORMIO_CI_SRC: ${{ matrix.example }}
